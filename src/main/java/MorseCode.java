@@ -12,39 +12,40 @@ public class MorseCode {
             "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.",
             "-----", "--..--", ".-.-.-", "..--..","/"};
 
-    public String lettersToMorseCode(String inputt) {
-        String input = inputt.toLowerCase();
-        String word = "";
+    public String lettersToMorseCode(String inputWord) {
+        String input = inputWord.toLowerCase();
+        String morseWord = "";
         for (int i = 0; i < input.length(); i++) {
             for (int j = 0; j < english.length; j++) {
 
                 if (english[j] == input.charAt(i)) {
-                    word = word + morse[j] + " ";
+                    morseWord = morseWord + morse[j] + " ";
                 }
             }
 
 
         }
-        return word;
+        assert morseWord.length() == inputWord.split(" ").length;
+        return morseWord;
     }
 
 
 
-    public String morseCodeToLetters(String inputt) {
-        String word = "";
-        String input []= inputt.split(" ");
+    public String morseCodeToLetters(String inputMorse) {
+        String englishWord = "";
+        String input []= inputMorse.split(" ");
         for (int i = 0; i < input.length; i++) {
             for (int j = 0; j < morse.length; j++) {
 
                 if (morse[j].equals(input[i])) {
-                    word = word + english[j] ;
+                    englishWord = englishWord + english[j] ;
                 }
             }
 
 
         }
-
-        return word;
+        assert inputMorse.length() == englishWord.split(" ").length;
+        return englishWord;
 
     }
 }
